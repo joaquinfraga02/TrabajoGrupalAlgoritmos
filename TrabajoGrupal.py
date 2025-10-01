@@ -33,6 +33,8 @@ def listado_de_productos():
         for p in productos:
             print(i, ". - Nombre:", p["Nombre"], "- Precio:", p["Precio"], "- Stock:", p["Stock"])
             i += 1
+def listapreciosconiva(productos):
+    return [(p["Nombre"], p["precio"] * 1.21) for p in productos]
 
 def registro_de_proveedores():
     print("-- Registro de proveedores --")
@@ -76,6 +78,11 @@ def menu():
             agregar_productos()
         elif opcion == "2":
             listado_de_productos()
+            if len(productos) > 0: 
+                print("Lista de precios con IVA") 
+                lista_iva = listapreciosconiva(productos) 
+                for nombre, precio in lista_iva: 
+                    print(f"{nombre} - Precio con IVA: ${precio}")
         elif opcion == "3":
             registro_de_proveedores()
         elif opcion == "4":
